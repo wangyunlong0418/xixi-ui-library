@@ -1,4 +1,4 @@
-# xixi-ui
+# xixi-ui-library
 
 ## Getting Started
 
