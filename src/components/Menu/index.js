@@ -6,7 +6,7 @@ import {
   SIDEBAR_WIDTH_FULL,
   SIDEBAR_WIDTH_REDUCED,
 } from './constant';
-import Flex from '../components/Container/Flex';
+import Flex from '../Container/Flex';
 import Overlay from '../Overlay';
 import Panel from './Panel';
 import { useMatchBreakpoints } from '../../hooks';

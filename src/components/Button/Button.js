@@ -1,5 +1,5 @@
 import React, { cloneElement, isValidElement } from "react";
-import getExternalLinkProps from "../utils/getExternalLinkProps";
+import getExternalLinkProps from "../../utils/getExternalLinkProps";
 import StyledButton from "./StyledButton";
 
 import { variants, scales } from './constant';

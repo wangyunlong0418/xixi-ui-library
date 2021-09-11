@@ -1,6 +1,6 @@
 import React from "react";
 import Text from "../Text/Text";
-import Flex from "../components/Container/Flex";
+import Flex from "../Container/Flex";
 import Button from "../Button/Button";
 import Icons from "./icons";
 
