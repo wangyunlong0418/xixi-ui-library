@@ -25,6 +25,7 @@
 /.idea
 
 /es
+/dist
 
 
 rename.js
