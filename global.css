@@ -1,0 +1,11 @@
+.light {
+  --backgroundAlt: '#FFFFFF';
+  --cardBorder: "#E7E3EB";
+  --textSubtle: '#7A6EAA';
+}
+
+.dark {
+  --backgroundAlt: '#27262c';
+  --cardBorder: "#383241";
+  --textSubtle: '#B8ADD2';
+}
