@@ -1,36 +1,40 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { getDefaultTheme } from '../../utils/getThemeValue';
 
 const getLeft = ({ position }) => {
-  if (position === "top-right") {
-    return "100%";
+  if (position === 'top-right') {
+    return '100%';
   }
-  return "50%";
+  return '50%';
 };
 
 const getBottom = ({ position }) => {
-  if (position === "top" || position === "top-right") {
-    return "100%";
+  if (position === 'top' || position === 'top-right') {
+    return '100%';
   }
-  return "auto";
+  return 'auto';
 };
 
-const DropdownContent = styled.div`
-  width: max-content;
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  transform: translate(-50%, 0);
-  left: ${getLeft};
-  bottom: ${getBottom};
-  background-color: ${({ theme }) => theme.nav.background};
-  box-shadow: ${({ theme }) => theme.shadows.level1};
-  padding: 16px;
-  max-height: 400px;
-  overflow-y: auto;
-  z-index: ${({ theme }) => theme.zIndices.dropdown};
-  border-radius: ${({ theme }) => theme.radii.small};
-`;
+const DropdownContent = ({ theme: t }) => {
+  const theme = getDefaultTheme(t);
+  return styled.div`
+    width: max-content;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    transform: translate(-50%, 0);
+    left: ${getLeft};
+    bottom: ${getBottom};
+    background-color: ${theme.nav.background};
+    box-shadow: ${theme.shadows.level1};
+    padding: 16px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: ${theme.zIndices.dropdown};
+    border-radius: ${theme.radii.small};
+  `;
+};
 
 const Container = styled.div`
   position: relative;
@@ -39,7 +43,7 @@ const Container = styled.div`
   }
 `;
 
-const Dropdown = ({ target, position = "bottom", children }) => {
+const Dropdown = ({ target, position = 'bottom', children }) => {
   return (
     <Container>
       {target}
@@ -48,7 +52,7 @@ const Dropdown = ({ target, position = "bottom", children }) => {
   );
 };
 Dropdown.defaultProps = {
-  position: "bottom",
+  position: 'bottom',
 };
 
 export default Dropdown;

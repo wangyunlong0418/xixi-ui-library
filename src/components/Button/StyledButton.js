@@ -1,8 +1,11 @@
-import styled from "styled-components";
-import { space, layout, variant } from "styled-system";
-import { scaleVariants, styleVariants } from "./theme";
+import styled from 'styled-components';
+import { space, layout, variant } from 'styled-system';
+import { scaleVariants, styleVariants } from './theme';
+import { getDefaultTheme } from '../../utils/getThemeValue';
 
-const getDisabledStyles = ({ $isLoading, theme }) => {
+const getDisabledStyles = ({ $isLoading, theme: t }) => {
+  const theme = getDefaultTheme(t);
+
   if ($isLoading === true) {
     return `
       &:disabled,
@@ -31,7 +34,7 @@ const getDisabledStyles = ({ $isLoading, theme }) => {
  */
 
 const getOpacity = ({ $isLoading = false }) => {
-  return $isLoading ? ".5" : "1";
+  return $isLoading ? '.5' : '1';
 };
 
 const StyledButton = styled.button`
@@ -63,7 +66,7 @@ const StyledButton = styled.button`
 
   ${getDisabledStyles}
   ${variant({
-    prop: "scale",
+    prop: 'scale',
     variants: scaleVariants,
   })}
   ${variant({

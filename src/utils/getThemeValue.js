@@ -1,13 +1,15 @@
-import { DefaultTheme } from "styled-components";
-import get from "lodash/get";
-
-
-// const getThemeValue = (path, fallback) => (theme = DefaultTheme) => get(theme, path, fallback);
+import get from 'lodash/get';
+import light from '../theme/light';
 
 const getThemeValue = (path, fallback) => {
-  return (theme = DefaultTheme) => {
-    return get(theme, path, fallback)
-  }
-}
+  return (theme = {}) => {
+    return get(theme, path, fallback);
+  };
+};
 
 export default getThemeValue;
+
+export const getDefaultTheme = (theme = {}) => {
+  const realTheme = Object.keys(theme).length > 0 ? theme : light;
+  return realTheme;
+};

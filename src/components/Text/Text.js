@@ -1,35 +1,22 @@
-import styled from "styled-components";
-import { space, typography, layout } from "styled-system";
-import getThemeValue from '../../utils/getThemeValue';
+import React from 'react';
+import classnames from 'classnames';
+import styles from './index.module.less';
 
-const getColor = ({ color, theme }) => {
-  return getThemeValue(`colors.${color}`, color)(theme);
+const Text = ({ children, small, ellipsis, className }) => {
+  return (
+    <div
+      className={classnames(styles.text, className, {
+        [styles.small]: small,
+        [styles.ellipsis]: ellipsis,
+      })}
+    >
+      {children}
+    </div>
+  );
 };
-
-const getFontSize = ({ fontSize, small }) => {
-  return small ? "14px" : fontSize || "16px";
-};
-
-
-const Text = styled.div`
-  color: ${getColor};
-  font-size: ${getFontSize};
-  font-weight: ${({ bold }) => (bold ? 600 : 400)};
-  line-height: 1.5;
-  ${({ textTransform }) => textTransform && `text-transform: ${textTransform};`}
-  ${({ ellipsis }) =>
-    ellipsis &&
-    `white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;`}
-
-  ${space}
-  ${typography}
-  ${layout}
-`;
 
 Text.defaultProps = {
-  color: "text",
+  color: 'text',
   small: false,
   ellipsis: false,
 };

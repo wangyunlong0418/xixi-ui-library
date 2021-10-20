@@ -1,21 +1,35 @@
-import styled from "styled-components";
+import React, { useState, useEffect, useCallback } from 'react';
+import cx from 'classnames';
+import styles from './index.module.css';
 
-const Overlay = styled.div.attrs({ role: "presentation" })>`
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.colors.overlay};
-  transition: opacity 0.4s;
-  opacity: ${({ show }) => (show ? 0.6 : 0)};
-  z-index: ${({ zIndex }) => zIndex};
-  pointer-events: ${({ show }) => (show ? "initial" : "none")};
-`;
+const useClickMaskToClose = (maskCanClose, setVisible) => {
+  return useCallback(() => {
+    if (!maskCanClose) {
+      return;
+    }
+
+    setVisible(false);
+  }, [maskCanClose, setVisible]);
+};
+
+const Overlay = ({ show, maskCanClose }) => {
+  const [visible, setVisible] = useState(show);
+  const clickMaskToClose = useClickMaskToClose(maskCanClose, setVisible);
+  useEffect(() => {
+    setVisible(show);
+  }, [show]);
+
+  return (
+    <div
+      className={cx(styles.overlayBox, { [styles.visible]: visible })}
+      role="presentation"
+      onClick={clickMaskToClose}
+    />
+  );
+};
 
 Overlay.defaultProps = {
-  show: false,
-  zIndex: 10,
+  maskCanClose: true,
 };
 
 export default Overlay;

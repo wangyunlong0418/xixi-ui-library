@@ -20,6 +20,16 @@ export default {
   autoprefixer: {
     browsers: ['ie>9', 'Safari >= 6'],
   },
+  extractCSS: true,
+  lessInBabelMode: true,
+  doc: {
+    themeConfig: { mode: 'dark' },
+    htmlContext: {
+      body: {
+        class: 'dark',
+      },
+    },
+  },
   pkgs: [
     // 组件依赖构建顺序， 例如 a组件依赖于b组件，那么需要先编译 b,在编译a,则 这里可以控制组件编译顺序
   ],

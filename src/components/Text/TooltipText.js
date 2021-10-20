@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import Text from "./Text";
+import React from 'react';
+import Text from './Text';
+import styles from './index.module.less';
 
-const TooltipText = styled(Text)`
-  text-decoration: ${({ theme }) => `underline dotted ${theme.colors.textSubtle}`};
-  text-underline-offset: 0.1em;
-`;
+const TooltipText = (props) => {
+  return <Text className={styles.tooltipText} {...props} />;
+};
 
 export default TooltipText;
